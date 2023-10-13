@@ -49,7 +49,7 @@
             </div>
             <div class="input-container">
                 <p>Weight</p>
-                <input bind:value={weight} type="number" placeholder="ex (1.5)">
+                <input bind:value={weight} type="number" placeholder="ex (70.9)">
             </div>
             <div class="submitbutton">
                 <div class="buttton">
