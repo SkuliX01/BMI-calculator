@@ -5,11 +5,30 @@
     let bmiText = "";
     let bmiClass = "";
 
-    function CalculateBMI () {
-        calc = 
-    }
-    
 
+    
+    function CalculateBMI () {
+        bmi = weight / (height * height);
+        const resetTime = 2500;
+        const ResetVar = () => {
+            bmi = 0;
+        }
+        setTimeout(ResetVar, resetTime)
+    if (bmi < 18.5) {
+        bmiText = "Underweight";
+        bmiClass = "Underweight";
+    } else if (bmi > 18.5 && bmi < 24.9) {
+        bmiText = "Normal";
+        bmiClass = "Normal";
+    } else if (bmi > 25 && bmi < 29.9) {
+        bmiText = "Overweight";
+        bmiClass = "Overweight";
+    } else if (bmi > 30) {
+        bmiText = "Obese";
+        bmiClass = "Obese";
+    }
+
+}    
 </script>
 
 
@@ -23,15 +42,15 @@
         <div class="Section2">
             <div class="input-container">
                 <p>Height</p>
-                <input bind:value={height} type="number">
+                <input bind:value={height} placeholder="ex (1.5)">
             </div>
             <div class="input-container">
                 <p>Weight</p>
-                <input bind:value={weight} type="number">
+                <input bind:value={weight} type="number" placeholder="ex (1.5)">
             </div>
             <div class="submitbutton">
                 <div class="buttton">
-                    <button>Calculate</button>
+                    <button on:click={CalculateBMI}>Calculate</button>
                 </div>
             </div>
             <div class="bmitext">
@@ -41,6 +60,9 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="Footer">
+        <footer>Made with ❤️ by SkuliX</footer>
     </div>
 </body>
 
@@ -74,16 +96,20 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
     }
 
     .input-container {
         margin-top: 15px;
+        text-align: center; /* Add this line to center-align the input and label */
     }
 
     .input-container input {
         width: 175px;
         height: 35px;
         border-radius: 15px;
+        display: block; /* Change to block to prevent horizontal alignment issues */
+        margin: 0 auto; /* Center-align the input field */
     }
 
     .input-container p {
@@ -138,4 +164,26 @@
             background-color: #fff;
         }
     }
+
+    .Bmi p {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        color: #fff;
+        font-family: "montserrat", sans-serif;
+    }
+
+    .Footer footer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "montserrat", sans-serif;
+        position: fixed;
+        bottom: 95px;
+        width: 100%;
+        color: #fff;
+        font-weight: 400;
+        font-size: x-large;
+    }
+
 </style>
