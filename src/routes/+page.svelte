@@ -1,14 +1,13 @@
 <script>
-    let height = 0;
-    let weight = 0;
+    let height = "";
+    let weight = "";
     let bmi = 0;
     let bmiText = "";
     let bmiClass = "";
 
-
     
     function CalculateBMI () {
-        bmi = weight / (height * height);
+        bmi = parseFloat(weight) / (parseFloat(height) ** 2);
         const resetTime = 2500;
         const ResetVar = () => {
             bmi = 0;
@@ -17,15 +16,19 @@
     if (bmi < 18.5) {
         bmiText = "Underweight";
         bmiClass = "Underweight";
+        document.getElementById("bmicolor").style.color = "lightblue"
     } else if (bmi > 18.5 && bmi < 24.9) {
         bmiText = "Normal";
         bmiClass = "Normal";
+        document.getElementById("bmicolor").style.color = "green"
     } else if (bmi > 25 && bmi < 29.9) {
         bmiText = "Overweight";
         bmiClass = "Overweight";
+        document.getElementById("bmicolor").style.color = "orange"
     } else if (bmi > 30) {
         bmiText = "Obese";
         bmiClass = "Obese";
+        document.getElementById("bmicolor").style.color = "red"
     }
 
 }    
@@ -56,7 +59,7 @@
             <div class="bmitext">
                 <div class="Bmi">
                     <p>Your bmi is : {bmiText}</p>
-                    <p>And you are classified : {bmiClass}</p>
+                    <p>And you are classified : <p id="bmicolor">{bmiClass}</p>
                 </div>
             </div>
         </div>
@@ -184,6 +187,11 @@
         color: #fff;
         font-weight: 400;
         font-size: x-large;
+    }
+
+    .input-container input:active {
+        border: none;
+        border-color: #fff;
     }
 
 </style>
